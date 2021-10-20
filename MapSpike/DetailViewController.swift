@@ -6,24 +6,39 @@
 //
 
 import UIKit
+import MapKit
 
 class DetailViewController: UIViewController {
-
+    var lead: Lead?
+    
+    // let coordinator = LocationCoordinator()
+    
+    @IBOutlet weak var locationMapView: MKMapView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        guard let latitude = lead?.lat,
+              let longitude = lead?.lon else {return}
+        
+        let location = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+        
+        
+        
+        
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = location
+        annotation.title = "lead"
+        locationMapView.addAnnotation(annotation)
+        
+        let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+        let region = MKCoordinateRegion(center: location, span: span)
+        locationMapView.setRegion(region, animated: true)
+        locationMapView.regionThatFits(region)
+        
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    
+    
+    
 }

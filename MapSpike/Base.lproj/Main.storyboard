@@ -25,7 +25,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="2dl-MO-GqO" kind="show" id="bWR-Tl-XXO"/>
+                                    <segue destination="2dl-MO-GqO" kind="show" identifier="leadDetails" id="bWR-Tl-XXO"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -46,17 +46,31 @@
             </objects>
             <point key="canvasLocation" x="378" y="93"/>
         </scene>
-        <!--View Controller-->
+        <!--Detail View Controller-->
         <scene sceneID="ghK-wp-kG7">
             <objects>
-                <viewController id="2dl-MO-GqO" sceneMemberID="viewController">
+                <viewController id="2dl-MO-GqO" customClass="DetailViewController" customModule="MapSpike" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kyG-vO-Txh">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="kIC-z9-Zee">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                            </mapView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="n3e-Qz-MFi"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="n3e-Qz-MFi" firstAttribute="trailing" secondItem="kIC-z9-Zee" secondAttribute="trailing" id="KPx-2G-lfx"/>
+                            <constraint firstItem="kIC-z9-Zee" firstAttribute="top" secondItem="n3e-Qz-MFi" secondAttribute="top" id="diK-hZ-iB0"/>
+                            <constraint firstItem="kIC-z9-Zee" firstAttribute="leading" secondItem="n3e-Qz-MFi" secondAttribute="leading" id="ooM-B9-QGo"/>
+                            <constraint firstItem="n3e-Qz-MFi" firstAttribute="bottom" secondItem="kIC-z9-Zee" secondAttribute="bottom" id="puB-th-M0b"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="3ix-hi-lQY"/>
+                    <connections>
+                        <outlet property="locationMapView" destination="kIC-z9-Zee" id="BJw-Ig-OTL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vaz-63-lH6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

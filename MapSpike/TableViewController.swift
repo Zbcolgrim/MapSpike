@@ -45,7 +45,11 @@ class TableViewController: UITableViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-       
+        guard segue.identifier == "leadDetails",
+        let indexPath = tableView.indexPathForSelectedRow,
+              let destination = segue.destination as? DetailViewController else {return}
+        let lead = manager.leads[indexPath.row]
+        destination.lead = lead 
     }
     
 
